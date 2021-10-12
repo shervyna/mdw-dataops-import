@@ -21,11 +21,11 @@ jobs:
           inputs:
             azureSubscription: ${{ parameters.serviceConnection }}
             AuthenticationType: 'server'
-            ServerName: $(sqlsrvrName).database.windows.net
+            ServerName: $(sqlsrvrName).sql.azuresynapse.net
             DatabaseName: $(sqlDwDatabaseName)
             SqlUsername: '$(sqlsrvrUsername)'
             SqlPassword: '$(sqlsrvrPassword)'
             deployType: 'DacpacTask'
             DacpacFile: '$(Pipeline.Workspace)/ciartifacts/sql_dw_dacpac/$(sqlProjName).dacpac'
             AdditionalArguments: '/Variables:ADLSLocation=abfss://datalake@$(datalakeAccountName).dfs.core.windows.net /Variables:ADLSCredentialKey=$(datalakeKey)'
-          displayName: 'Azure SQL Dacpac'
+          displayName: 'New Dedicated sql pool Dacpac Deployment'
